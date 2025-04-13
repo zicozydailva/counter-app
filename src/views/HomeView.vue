@@ -5,23 +5,30 @@
       <button @click="decrement">-</button>
       <button @click="increment">+</button>
     </div>
+    <hr />
+    <div>
+      <p>The counter is: {{ oddOrEven }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue'
 
-const count = ref(0);
+const count = ref(0)
 
 const increment = () => {
-  count.value++;
-};
+  count.value++
+}
 
 const decrement = () => {
-  count.value--;
-};
-</script>
+  count.value--
+}
 
+const oddOrEven = computed(() => {
+  return count.value % 2 === 0 ? 'even' : 'odd'
+})
+</script>
 
 <style>
 .home {
